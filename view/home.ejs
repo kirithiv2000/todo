@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+    <link rel="stylesheet" href="css/home.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <form action="/api/create">
+        <div style="text-align: center;">
+            <h1>Todo App</h1>
+        </div>
+        <table class="table table-bordered" style="border: 1px solid grey;">
+            <tbody>
+              <tr>
+                <td colspan="2">
+                    <label> Description: </label>
+                    <input name="todo" placeholder="what do you need to do?" type="string" required   class="inputfields"/>    
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1">
+                <label> Category: </label>
+                <select name="category"  value="" class="inputfields">
+                    <option value="" disabled selected hidden>choose a category</option>
+                    <option value="personal">Personal</option>
+                    <option value="work">Work</option>
+                    <option value="school">School</option>
+                    <option value="cleaning">Cleaning</option>
+                    <option value="other">Other</option>
+                  </select>
+                </td>
+                <td>
+                    <label> Due Date: </label>
+                    <input name="duedate"   class="inputfields" type="date"/>
+                  </td>
+              </tr>
+              <tr>
+                <td colspan="2" style="text-align: center;">
+                    <button class="addTodoButton" type="submit">Add Todo</button></td>
+              </tr>
+            </tbody>
+          </table>
+    </form>
+    
+    <table class="table" style="border: 1px solid grey;">
+        <tbody>
+            <% for (var i of todoList) {%>
+                
+                <tr>
+                    <td >
+                        <input type="checkbox"/>
+                    </td>
+                    <td >
+                        <h4><%= i.todo %></h4>
+                        <div ><i class="fa fa-calendar" aria-hidden="true"></i>
+                            <span  class="date-display" value="<%= i.duedate %>"><%= i.duedate %></span>
+                        
+                    </td>
+                    <td >
+                        <div class="showincenter">
+                            <button class="Button" style="background-color:<%= colorForButtons[i.category] %>;">
+
+                                <%= i.category %>
+                            </button>
+                        </div>
+                       
+                    </td>
+                    <td >
+                        <div class="showincenter">
+                            <a href="/api/delete/<%= i._id %>" >
+                                <button class="Button" style="background-color: red;">
+                                    Delete Task
+                                </button>
+                            </a>
+
+                        </div>
+                    </td>
+                  </tr>
+            <%} %>
+        </table>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="js/home.js"></script>
+</body>
+</html>

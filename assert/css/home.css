@@ -1,0 +1,35 @@
+/* remove border from input fields */
+.inputfields{
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    height: 50px;
+}
+/* to remove outline for input field  */
+.inputfields:focus{
+    outline: none;
+}
+.addTodoButton{
+    margin: 10px;
+    background-color: black;
+    border: none;
+    width: 300px;
+    height: 50px;
+    color: white;
+}
+/* common css for button  */
+.Button{
+    border: none;
+    color: white;
+    width: 100px;
+    height: 30px;
+}
+/* giving boder for table */
+.table{
+    border: 2px solid grey;
+}
+/* showing the buttons in the center of column */
+.showincenter{
+    position: relative;
+    top: 15px;
+}
